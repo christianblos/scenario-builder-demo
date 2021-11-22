@@ -1,0 +1,19 @@
+/*
+This file is not used by the application in any way.
+It just helps you to prepare a groovy script for the scenario builder endpoint (See ScenarioController).
+As the endpoint accepts groovy code, you can prepare the code in a groovy file in IntelliJ.
+This gdsl file enables IntelliJ autocompletion for it.
+
+See more info about GroovyDSL here:
+https://confluence.jetbrains.com/display/GRVY/Scripting+IDE+for+DSL+awareness#ScriptingIDEforDSLawareness-DescribingGroovyDSLinternallanguageinitsownterms
+*/
+def ctx = context(scope: scriptScope())
+
+contributor(ctx) {
+    property name: "scenario", type: "com.example.demo.scenario.given.GivenGameScenario"
+
+    method name: "namedRef",
+            params: [name: "java.lang.String"],
+            type: "com.innogames.scenariobuilder.Ref",
+            doc: "Creates (or just returns if already exists) a named reference whose ID is returned by the player setup endpoint"
+}
